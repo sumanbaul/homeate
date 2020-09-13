@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import '../bloc.navigation_bloc/navigation_bloc.dart';
 import 'package:homeate/reader/SwitchStateReader.dart';
 import 'package:homeate/reader/ConfigurationReader.dart';
 import 'package:homeate/widget/btnWidget.dart';
@@ -13,54 +15,73 @@ const int inActiveColor = 0x88D9E6FF;
 const String activeText = "Active";
 const String inActiveText = "InActive";
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatelessWidget with NavigationStates {
+  GlobalKey<RefreshIndicatorState> refreshKey;
+
+  void initState() {
+    refreshKey = GlobalKey<RefreshIndicatorState>();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Container(
-                padding: EdgeInsets.all(20),
-                child: Text('Homeate',
-                    style:
-                        TextStyle(fontWeight: FontWeight.w900, fontSize: 28)),
-                color: Color(0x88D9E6FF),
-                width: MediaQuery.of(context).size.width,
-              )
-            ],
-            crossAxisAlignment: CrossAxisAlignment.center,
-          ),
-          Center(
-            child: Row(children: <Widget>[
-              Expanded(
-                child: Container(
-                  padding: EdgeInsets.all(20),
-                  child: Text(
-                    "Home",
-                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
+    return Scaffold(
+      body: RefreshIndicator(
+        onRefresh: () => Future.delayed(const Duration(seconds: 3)),
+        key: refreshKey,
+        child: SingleChildScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
+          child: SafeArea(
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.all(20),
+                      child: Text('Homeate',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w900, fontSize: 28)),
+                      color: Color(0x88D9E6FF),
+                      width: MediaQuery.of(context).size.width,
+                    )
+                  ],
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                ),
+                Container(
+                  child: Center(
+                    child: Row(children: <Widget>[
+                      Container(
+                        padding: EdgeInsets.all(20),
+                        child: Text(
+                          "Home",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w500, fontSize: 20),
+                        ),
+                      ),
+                    ]),
                   ),
                 ),
-              ),
-            ]),
+                Container(
+                  // height: MediaQuery.of(context).size.height - 160.0,
+                  child: Row(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.all(20),
+                        height: 150.0,
+                        width: (MediaQuery.of(context).size.width - 60) / 2,
+                        child: UpdateRaisedBtnD2(),
+                      ),
+                      Container(
+                        height: 150.0,
+                        width: (MediaQuery.of(context).size.width - 60) / 2,
+                        child: UpdateRaisedBtnD3(),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
-          Row(
-            children: [
-              Container(
-                margin: EdgeInsets.all(20),
-                height: 150.0,
-                width: (MediaQuery.of(context).size.width - 60) / 2,
-                child: UpdateRaisedBtnD2(),
-              ),
-              Container(
-                height: 150.0,
-                width: (MediaQuery.of(context).size.width - 60) / 2,
-                child: UpdateRaisedBtnD3(),
-              ),
-            ],
-          ),
-        ],
+        ),
       ),
     );
   }

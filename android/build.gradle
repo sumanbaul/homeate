@@ -1,3 +1,10 @@
+   def keystoreProperties = new Properties()
+   def keystorePropertiesFile = rootProject.file('key.properties')
+   if (keystorePropertiesFile.exists()) {
+       keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+   }
+
+
 buildscript {
     ext.kotlin_version = '1.2.71'
     repositories {
@@ -29,3 +36,5 @@ subprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+ 

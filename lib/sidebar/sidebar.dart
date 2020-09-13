@@ -1,6 +1,9 @@
 import 'dart:async';
 import 'dart:async' as prefix0;
 import 'dart:core';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:homeate/bloc.navigation_bloc/navigation_bloc.dart';
+import 'package:homeate/pages/homepage.dart';
 import 'package:homeate/sidebar/menu_item.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:flutter/material.dart';
@@ -110,14 +113,29 @@ class _SideBarState extends State<SideBar>
                       MenuItem(
                         icon: Icons.home,
                         title: "Home",
+                        onTap: () {
+                          onIconPressed();
+                          BlocProvider.of<NavigationBloc>(context)
+                              .add(NavigationEvents.HomePageClickedEvent);
+                        },
                       ),
                       MenuItem(
                         icon: Icons.account_circle,
                         title: "Account",
+                        onTap: () {
+                          onIconPressed();
+                          BlocProvider.of<NavigationBloc>(context)
+                              .add(NavigationEvents.AccountClickedEvent);
+                        },
                       ),
                       MenuItem(
                         icon: Icons.settings,
                         title: "Configure",
+                        onTap: () {
+                          onIconPressed();
+                          BlocProvider.of<NavigationBloc>(context)
+                              .add(NavigationEvents.ConfigureClickedEvent);
+                        },
                       ),
                       Divider(
                         height: 64,
@@ -129,6 +147,11 @@ class _SideBarState extends State<SideBar>
                       MenuItem(
                         icon: Icons.developer_board,
                         title: "About",
+                        onTap: () {
+                          onIconPressed();
+                          BlocProvider.of<NavigationBloc>(context)
+                              .add(NavigationEvents.AboutClickedEvent);
+                        },
                       ),
                     ],
                   ),

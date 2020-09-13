@@ -32,7 +32,23 @@ class UpdateRaisedBtnD2State extends State {
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             // Future hasn't finished yet, return a placeholder
-            return Text('Loading');
+            btnText = "Loading..";
+
+            color = 0x88D9E6FF;
+            return RaisedButton.icon(
+              onPressed: () => changeText(),
+              label: Text('$btnText',
+                  style: TextStyle(fontSize: 20, color: Colors.white)),
+              color: Color(int.parse('$color')),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(18.0),
+                side: BorderSide(color: Colors.black12),
+              ),
+              icon: Icon(
+                Icons.lightbulb_outline,
+                color: Colors.white,
+              ),
+            );
           } else {
             btnText = snapshot.data[1];
             color = snapshot.data[2];
