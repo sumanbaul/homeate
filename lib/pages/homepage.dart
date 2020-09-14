@@ -8,6 +8,7 @@ import 'package:homeate/widget/btnWidget.dart';
 //Reader Class initialization
 var swtichStateReader = new SwtichStateReader();
 var configurationReader = new ApiUrlBuilder();
+//var initConfigurationValues = configurationReader.getTokenAuth();
 
 //constants
 const int activeColor = 0xFF262AAA;
@@ -47,22 +48,22 @@ class HomePage extends StatelessWidget with NavigationStates {
                   crossAxisAlignment: CrossAxisAlignment.center,
                 ),
                 Container(
-                  child: Center(
-                    child: Row(children: <Widget>[
-                      Container(
-                        padding: EdgeInsets.all(20),
-                        child: Text(
-                          "Home",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w500, fontSize: 20),
-                        ),
+                  child: Row(children: <Widget>[
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      padding: EdgeInsets.all(20),
+                      child: Text(
+                        "Home",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w500, fontSize: 20),
                       ),
-                    ]),
-                  ),
+                    ),
+                  ]),
                 ),
                 Container(
-                  // height: MediaQuery.of(context).size.height - 160.0,
+                  height: 600,
                   child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
                         margin: EdgeInsets.all(20),
@@ -71,6 +72,7 @@ class HomePage extends StatelessWidget with NavigationStates {
                         child: UpdateRaisedBtnD2(),
                       ),
                       Container(
+                        margin: EdgeInsets.fromLTRB(0, 20, 0, 20),
                         height: 150.0,
                         width: (MediaQuery.of(context).size.width - 60) / 2,
                         child: UpdateRaisedBtnD3(),

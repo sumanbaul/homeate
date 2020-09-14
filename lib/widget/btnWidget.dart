@@ -12,11 +12,12 @@ class UpdateRaisedBtnD2State extends State {
 
   changeText() async {
     //Change PIN State
-    await swtichStateReader.btnSwitch(getPinUrl, activePinUrl, inActivePinUrl);
+    await swtichStateReader.btnSwitch(getPinUrl.toString(),
+        activePinUrl.toString(), inActivePinUrl.toString());
 
     //Get PIN State
-    var status = await swtichStateReader.getBtnState(
-        getPinUrl, activeText, inActiveText, activeColor, inActiveColor);
+    var status = await swtichStateReader.getBtnState(getPinUrl.toString(),
+        activeText, inActiveText, activeColor, inActiveColor);
 
     setState(() {
       btnText = status[1];
@@ -28,7 +29,7 @@ class UpdateRaisedBtnD2State extends State {
   Widget build(BuildContext context) {
     return FutureBuilder(
         future: swtichStateReader.getBtnState(
-            getPinUrl, "Active", "InActive", 0xFF262AAA, 0x88D9E6FF),
+            getPinUrl.toString(), "Active", "InActive", 0xFF262AAA, 0x88D9E6FF),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             // Future hasn't finished yet, return a placeholder
@@ -40,6 +41,7 @@ class UpdateRaisedBtnD2State extends State {
               label: Text('$btnText',
                   style: TextStyle(fontSize: 20, color: Colors.white)),
               color: Color(int.parse('$color')),
+              elevation: 15,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(18.0),
                 side: BorderSide(color: Colors.black12),
@@ -57,6 +59,7 @@ class UpdateRaisedBtnD2State extends State {
               label: Text('$btnText',
                   style: TextStyle(fontSize: 20, color: Colors.white)),
               color: Color(int.parse('$color')),
+              elevation: 15,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(18.0),
                 side: BorderSide(color: Colors.black12),
@@ -82,11 +85,12 @@ class UpdateRaisedBtnD3State extends State {
 
   changeText() async {
     //Change PIN State
-    await swtichStateReader.btnSwitch(getPinUrl, activePinUrl, inActivePinUrl);
+    await swtichStateReader.btnSwitch(getPinUrl.toString(),
+        activePinUrl.toString(), inActivePinUrl.toString());
 
     //Get PIN State
-    var status = await swtichStateReader.getBtnState(
-        getPinUrl, activeText, inActiveText, activeColor, inActiveColor);
+    var status = await swtichStateReader.getBtnState(getPinUrl.toString(),
+        activeText, inActiveText, activeColor, inActiveColor);
 
     setState(() {
       btnText = status[1];
@@ -98,7 +102,7 @@ class UpdateRaisedBtnD3State extends State {
   Widget build(BuildContext context) {
     return FutureBuilder(
         future: swtichStateReader.getBtnState(
-            getPinUrl, "Active", "InActive", 0xFF262AAA, 0x88D9E6FF),
+            getPinUrl.toString(), "Active", "InActive", 0xFF262AAA, 0x88D9E6FF),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             // Future hasn't finished yet, return a placeholder
@@ -110,6 +114,7 @@ class UpdateRaisedBtnD3State extends State {
               label: Text('$btnText',
                   style: TextStyle(fontSize: 20, color: Colors.white)),
               color: Color(int.parse('$color')),
+              elevation: 15,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(18.0),
                 side: BorderSide(color: Colors.black12),
@@ -127,6 +132,7 @@ class UpdateRaisedBtnD3State extends State {
               label: Text('$btnText',
                   style: TextStyle(fontSize: 20, color: Colors.white)),
               color: Color(int.parse('$color')),
+              elevation: 15,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(18.0),
                 side: BorderSide(color: Colors.black12),

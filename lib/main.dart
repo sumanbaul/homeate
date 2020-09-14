@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:homeate/sidebar/sidebar_layout.dart';
+import 'package:homeate/pages/splashscreen.dart';
 //import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 
 void main() => runApp(MyApp());
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         primaryColorBrightness: Brightness.dark,
         brightness: Brightness.light,
       ),
-      home: SideBarLayout(),
+      home: SpashScreen(),
     );
   }
 }

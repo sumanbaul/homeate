@@ -3,7 +3,8 @@ import 'dart:async' as prefix0;
 import 'dart:core';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:homeate/bloc.navigation_bloc/navigation_bloc.dart';
-import 'package:homeate/pages/homepage.dart';
+import 'package:homeate/helper/database_helper.dart';
+//import 'package:homeate/pages/homepage.dart';
 import 'package:homeate/sidebar/menu_item.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,7 @@ class SideBar extends StatefulWidget {
 
 class _SideBarState extends State<SideBar>
     with SingleTickerProviderStateMixin<SideBar> {
+  final dbHelper = DatabaseHelper.instance;
   AnimationController _animationController;
   StreamController<bool> isSidebarOpenedStreamController;
 
@@ -32,6 +34,9 @@ class _SideBarState extends State<SideBar>
     isSidebarOpenedStreamController = PublishSubject<bool>();
     isSidebarOpenedStream = isSidebarOpenedStreamController.stream;
     isSidebarOpenedSink = isSidebarOpenedStreamController.sink;
+
+    //db fetch data
+    DatabaseHelper.instance.query();
   }
 
   @override
