@@ -1,7 +1,12 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
+import 'package:homeate/helper/configuration_helper.dart';
+import 'package:homeate/helper/database_helper.dart';
 import 'package:homeate/sidebar/sidebar_layout.dart';
+
+final ConfigurationHelper configurationHelper = new ConfigurationHelper();
+final dbHelper = DatabaseHelper.instance;
+List getTokenAuthData;
 
 class SpashScreen extends StatefulWidget {
   @override
@@ -16,13 +21,24 @@ class _SplashScreenState extends State<SpashScreen> {
   }
 
   startTime() async {
+    getTokenAuthData = await getTokenAuth();
     var duration = new Duration(seconds: 3);
+    //binding values with singleton Class
+    configurationHelper.setStateAuthUrl(
+        getTokenAuthData[1], getTokenAuthData[2]);
     return new Timer(duration, route);
   }
 
   route() {
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => SideBarLayout()));
+  }
+
+  Future<List> getTokenAuth() async {
+    var tokenAuthData = await dbHelper.query();
+    print("Inside Splashscreen: $tokenAuthData");
+
+    return tokenAuthData;
   }
 
   @override

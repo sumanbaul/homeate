@@ -79,9 +79,9 @@ class UpdateRaisedBtnD3State extends State {
   String btnText = "";
   int color = 0;
 
-  var getPinUrl = configurationReader.getPinValue('D3');
-  var activePinUrl = configurationReader.writePinValueViaGet('D3', 1);
-  var inActivePinUrl = configurationReader.writePinValueViaGet('D3', 0);
+  var getPinUrl = configurationReader.getPinValue('V2');
+  var activePinUrl = configurationReader.writePinValueViaGet('V2', 1);
+  var inActivePinUrl = configurationReader.writePinValueViaGet('V2', 0);
 
   changeText() async {
     //Change PIN State

@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:homeate/helper/configuration_helper.dart';
 import 'package:homeate/helper/database_helper.dart';
 import 'package:sqflite/sqflite.dart';
 import '../bloc.navigation_bloc/navigation_bloc.dart';
+
+final dbHelper = DatabaseHelper.instance;
+final ConfigurationHelper configurationHelper = new ConfigurationHelper();
+String _authToken = configurationHelper.authTokenData;
+String _serverUrl = configurationHelper.authUrlData;
 
 class ConfigurePage extends StatelessWidget with NavigationStates {
   TextEditingController authTokenTextController = new TextEditingController();
@@ -26,6 +32,50 @@ class ConfigurePage extends StatelessWidget with NavigationStates {
                   )
                 ],
                 crossAxisAlignment: CrossAxisAlignment.center,
+              ),
+              Container(
+                child: Center(
+                  child: Column(
+                    children: <Widget>[
+                      Container(
+                        padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                        child: new Theme(
+                          data: new ThemeData(
+                            primaryColor: Color(0xFF1BB5FD),
+                            primaryColorDark: Color(0xFF262AAA),
+                          ),
+                          child: Center(
+                            child: Text(
+                              "Token: $_authToken",
+                              style: TextStyle(
+                                  color: Colors.blueAccent,
+                                  fontSize: 15.0,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                        child: new Theme(
+                          data: new ThemeData(
+                            primaryColor: Color(0xFF1BB5FD),
+                            primaryColorDark: Color(0xFF262AAA),
+                          ),
+                          child: Center(
+                            child: Text(
+                              "Server URL: $_serverUrl",
+                              style: TextStyle(
+                                  color: Colors.blueAccent,
+                                  fontSize: 15.0,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
               Container(
                 child: Center(
@@ -127,7 +177,7 @@ class ConfigurePage extends StatelessWidget with NavigationStates {
   insert() async {
     // get a reference to the database
     // because this is an expensive operation we use async and await
-    Database db = await DatabaseHelper.instance.database;
+    Database db = await dbHelper.database;
 
     // row to insert
     Map<String, dynamic> row = {
@@ -141,4 +191,11 @@ class ConfigurePage extends StatelessWidget with NavigationStates {
     // show the results: print all rows in the db
     print(await db.query(DatabaseHelper.table));
   }
+
+  // Future<List> getTokenAuth() async {
+  //   var tokenAuthData = await dbHelper.query();
+  //   print("Inside Splashscreen: $tokenAuthData");
+
+  //   return tokenAuthData;
+  // }
 }
