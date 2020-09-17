@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'database_helper.dart';
 
 abstract class ConfigurationHelperBase {
   @protected
@@ -17,15 +16,13 @@ abstract class ConfigurationHelperBase {
 
 class ConfigurationHelper extends ConfigurationHelperBase {
   static final ConfigurationHelper _instance = ConfigurationHelper._internal();
-  final dbHelper = DatabaseHelper.instance;
-
   factory ConfigurationHelper() {
     return _instance;
   }
 
   ConfigurationHelper._internal() {
-    // authToken = "_authToken";
-    // authUrl = "_authUrl";
-    // print(authToken + " ; " + authUrl);
+    //default fallback
+    authToken = "U4iKtD5QG0oQcmPJrf8LmPwo0YK8n2bl";
+    authUrl = "http://blynk-cloud.com";
   }
 }

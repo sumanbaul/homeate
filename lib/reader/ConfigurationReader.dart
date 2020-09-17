@@ -7,17 +7,24 @@ import 'package:homeate/helper/database_helper.dart';
 
 final dbHelper = DatabaseHelper.instance;
 
-var xyz = new ConfigurationHelper();
+final ConfigurationHelper configurationHelper = new ConfigurationHelper();
 
-String _authToken = xyz.authTokenData;
-String _serverUrl = xyz.authUrlData;
+String _authToken = configurationHelper.authTokenData;
+String _serverUrl = configurationHelper.authUrlData;
 
 class ApiUrlBuilder {
-  void getTokenAuth() async {
-    var tokenAuthData = await dbHelper.query();
-    print(tokenAuthData);
-    //_authToken = tokenAuthData[1];
-    //_serverUrl = tokenAuthData[2];
+  // void getTokenAuth() async {
+  //   var tokenAuthData = await dbHelper.query();
+  //   print(tokenAuthData);
+  //   //_authToken = tokenAuthData[1];
+  //   //_serverUrl = tokenAuthData[2];
+  // }
+
+  ApiUrlBuilder() {
+    if (configurationHelper.authTokenData == null) {
+      _authToken = "U4iKtD5QG0oQcmPJrf8LmPwo0YK8n2bl";
+      _serverUrl = "http://blynk-cloud.com";
+    }
   }
 
   String getPinValue(String pin) {

@@ -24,8 +24,14 @@ class _SplashScreenState extends State<SpashScreen> {
     getTokenAuthData = await getTokenAuth();
     var duration = new Duration(seconds: 3);
     //binding values with singleton Class
-    configurationHelper.setStateAuthUrl(
-        getTokenAuthData[1], getTokenAuthData[2]);
+    if (getTokenAuthData == null) {
+      configurationHelper.setStateAuthUrl(
+          "U4iKtD5QG0oQcmPJrf8LmPwo0YK8n2bl", "http://blynk-cloud.com");
+    } else {
+      configurationHelper.setStateAuthUrl(
+          getTokenAuthData[1], getTokenAuthData[2]);
+    }
+
     return new Timer(duration, route);
   }
 
