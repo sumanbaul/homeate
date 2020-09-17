@@ -113,41 +113,37 @@ class UpdateRaisedBtnD3State extends State {
             //return Text('Loading');
             btnText = "Loading..";
             color = 0x88D9E6FF;
-            return Flexible(
-              child: RaisedButton.icon(
-                onPressed: () => changeText(),
-                label: Text('$btnText',
-                    style: TextStyle(fontSize: 20, color: Colors.white)),
-                color: Color(int.parse('$color')),
-                elevation: 15,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(18.0),
-                  side: BorderSide(color: Colors.black12),
-                ),
-                icon: Icon(
-                  Icons.ac_unit,
-                  color: Colors.white,
-                ),
+            return RaisedButton.icon(
+              onPressed: () => changeText(),
+              label: Text('$btnText',
+                  style: TextStyle(fontSize: 20, color: Colors.white)),
+              color: Color(int.parse('$color')),
+              elevation: 15,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(18.0),
+                side: BorderSide(color: Colors.black12),
+              ),
+              icon: Icon(
+                Icons.ac_unit,
+                color: Colors.white,
               ),
             );
           } else {
             btnText = snapshot.data[1];
             color = snapshot.data[2];
-            return Flexible(
-              child: RaisedButton.icon(
-                onPressed: () => changeText(),
-                label: Text('$btnText',
-                    style: TextStyle(fontSize: 20, color: Colors.white)),
-                color: Color(int.parse('$color')),
-                elevation: 15,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(18.0),
-                  side: BorderSide(color: Colors.black12),
-                ),
-                icon: Icon(
-                  Icons.ac_unit,
-                  color: Colors.white,
-                ),
+            return RaisedButton.icon(
+              onPressed: () => changeText(),
+              label: Text('$btnText',
+                  style: TextStyle(fontSize: 20, color: Colors.white)),
+              color: Color(int.parse('$color')),
+              elevation: 15,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(18.0),
+                side: BorderSide(color: Colors.black12),
+              ),
+              icon: Icon(
+                Icons.ac_unit,
+                color: Colors.white,
               ),
             );
           }

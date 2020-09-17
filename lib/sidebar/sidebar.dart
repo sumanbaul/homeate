@@ -123,6 +123,7 @@ class _SideBarState extends State<SideBar>
                           BlocProvider.of<NavigationBloc>(context)
                               .add(NavigationEvents.HomePageClickedEvent);
                         },
+                        
                       ),
                       MenuItem(
                         icon: Icons.account_circle,

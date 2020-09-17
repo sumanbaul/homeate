@@ -109,45 +109,87 @@ class _ConfigurePageState extends State<ConfigurePage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
               ),
               Container(
-                child: Center(
-                  child: Column(
-                    children: <Widget>[
-                      Container(
-                        padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                        child: new Theme(
-                          data: new ThemeData(
-                            primaryColor: Color(0xFF1BB5FD),
-                            primaryColorDark: Color(0xFF262AAA),
-                          ),
-                          child: SelectableText(
-                            "Token: $_authToken",
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                                color: Colors.blueAccent,
-                                fontSize: 15.0,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                        child: new Theme(
-                          data: new ThemeData(
-                            primaryColor: Color(0xFF1BB5FD),
-                            primaryColorDark: Color(0xFF262AAA),
-                          ),
-                          child: SelectableText(
-                            "Server URL: $_serverUrl",
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                                color: Colors.blueAccent,
-                                fontSize: 15.0,
-                                fontWeight: FontWeight.bold),
+                child: Column(
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        Container(
+                          padding: EdgeInsets.fromLTRB(20, 10, 0, 10),
+                          width: 70.0,
+                          child: new Theme(
+                            data: new ThemeData(
+                              primaryColor: Colors.blueGrey,
+                              primaryColorDark: Color(0xFF262AAA),
+                            ),
+                            child: SelectableText(
+                              "Token:",
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                  color: Colors.blueGrey,
+                                  fontSize: 12.0,
+                                  fontWeight: FontWeight.bold),
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
+                        Container(
+                          padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                          child: new Theme(
+                            data: new ThemeData(
+                              primaryColor: Color(0xFF1BB5FD),
+                              primaryColorDark: Color(0xFF262AAA),
+                            ),
+                            child: SelectableText(
+                              "$_authToken",
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                  color: Colors.blueAccent,
+                                  fontSize: 15.0,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Container(
+                          padding: EdgeInsets.fromLTRB(20, 0, 0, 10),
+                          width: 70.0,
+                          child: new Theme(
+                            data: new ThemeData(
+                              primaryColor: Colors.blueGrey,
+                              primaryColorDark: Color(0xFF262AAA),
+                            ),
+                            child: SelectableText(
+                              "URL:",
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                  color: Colors.blueGrey,
+                                  fontSize: 12.0,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                          child: new Theme(
+                            data: new ThemeData(
+                              primaryColor: Color(0xFF1BB5FD),
+                              primaryColorDark: Color(0xFF262AAA),
+                            ),
+                            child: SelectableText(
+                              "$_serverUrl",
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                  color: Colors.blueAccent,
+                                  fontSize: 15.0,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
               Container(

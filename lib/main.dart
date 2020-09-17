@@ -14,8 +14,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         //primarySwatch: Colors.blue,
         scaffoldBackgroundColor: Colors.white,
-        primaryColor: Colors.amberAccent,
-        primaryColorBrightness: Brightness.dark,
+        primaryColorDark: Colors.blue,
+        primaryColor: Colors.blue,
+        primaryColorBrightness: Brightness.light,
         brightness: Brightness.light,
       ),
       home: SpashScreen(),
