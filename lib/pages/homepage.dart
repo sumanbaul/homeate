@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:homeate/topbar/topbar.dart';
+import 'package:homeate/widget/temperatureChart.dart';
 //import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import '../bloc.navigation_bloc/navigation_bloc.dart';
 import 'package:homeate/reader/SwitchStateReader.dart';
@@ -19,12 +21,44 @@ const int activeColor = 0xFF262AAA;
 const int inActiveColor = 0x88D9E6FF;
 const String activeText = "Active";
 const String inActiveText = "InActive";
+// final double blurLevel;
+// final Offset offsetWhite;
+// final Offset offsetBlack;
+// final IconData icon;
+// final double iconSize;
 
-class HomePage extends StatelessWidget with NavigationStates {
+class HomePage extends StatefulWidget with NavigationStates {
+  final Color color;
+  final double blurLevel;
+  final Offset offsetWhite;
+  final Offset offsetBlack;
+  final double height;
+  final double width;
+  final IconData icon;
+  final double iconSize;
+
+  const HomePage(
+      {Key key,
+      this.color,
+      this.blurLevel,
+      this.offsetWhite,
+      this.offsetBlack,
+      this.height,
+      this.width,
+      this.icon,
+      this.iconSize})
+      : super(key: key);
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   GlobalKey<RefreshIndicatorState> refreshKey;
 
   var scaffold;
 
+  // ignore: must_call_super
   void initState() {
     refreshKey = GlobalKey<RefreshIndicatorState>();
   }
@@ -39,60 +73,97 @@ class HomePage extends StatelessWidget with NavigationStates {
         child: RefreshIndicator(
           onRefresh: () => Future.delayed(const Duration(seconds: 3)),
           key: refreshKey,
-          child: SingleChildScrollView(
-            physics: const AlwaysScrollableScrollPhysics(),
-            child: SafeArea(
-              child: Column(
+          child: Stack(
+            children: [
+              Column(
                 children: [
-                  Row(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.all(20),
-                        child: Text('Homeate',
+                  TopBar(),
+                  Container(
+                    child: Row(
+                      children: <Widget>[
+                        Container(
+                          padding: EdgeInsets.fromLTRB(20, 20, 0, 10),
+                          child: Text(
+                            'Homeate',
                             style: TextStyle(
-                                fontWeight: FontWeight.w900, fontSize: 28)),
-                        color: Color(0x88D9E6FF),
-                        width: MediaQuery.of(context).size.width,
-                      )
-                    ],
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                                fontWeight: FontWeight.w900, fontSize: 28),
+                          ),
+                          //color: Colors.grey[300],
+                          width: MediaQuery.of(context).size.width,
+                        )
+                      ],
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                    ),
                   ),
                   Container(
                     child: Row(children: <Widget>[
                       Container(
                         width: MediaQuery.of(context).size.width,
-                        padding: EdgeInsets.all(20),
+                        padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
                         child: Text(
-                          "Home",
+                          "Bed Room",
                           style: TextStyle(
-                              fontWeight: FontWeight.w500, fontSize: 20),
+                              fontWeight: FontWeight.w800,
+                              fontSize: 20,
+                              color: Colors.grey[800]),
                         ),
                       ),
                     ]),
                   ),
                   Container(
-                    height: 600,
+                    height: 200,
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
                           margin: EdgeInsets.all(20),
-                          height: 150.0,
+                          height: 120.0,
                           width: (MediaQuery.of(context).size.width - 60) / 2,
                           child: UpdateRaisedBtnD2(),
                         ),
                         Container(
                           margin: EdgeInsets.fromLTRB(0, 20, 0, 20),
-                          height: 150.0,
+                          height: 120.0,
                           width: (MediaQuery.of(context).size.width - 60) / 2,
                           child: UpdateRaisedBtnD3(),
                         ),
                       ],
                     ),
                   ),
+                  Container(
+                    //crossAxisAlignment: CrossAxisAlignment.start,
+                    //mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    child: Column(
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          padding: EdgeInsets.fromLTRB(20, 10, 0, 25),
+                          child: Text(
+                            "Lights",
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                                color: Colors.grey[800],
+                                fontWeight: FontWeight.w700,
+                                fontSize: 18),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        UpdateRaisedBtnD4(),
+                        UpdateRaisedBtnD4(),
+                        UpdateRaisedBtnD4(),
+                        //UpdateRaisedBtnD4(),
+                      ],
+                    ),
+                  ),
                 ],
               ),
-            ),
+            ],
           ),
         ),
       ),
@@ -116,12 +187,4 @@ class HomePage extends StatelessWidget with NavigationStates {
     }
     return Future.value(true);
   }
-}
-
-class UpdateRaisedBtnD2 extends StatefulWidget {
-  UpdateRaisedBtnD2State createState() => UpdateRaisedBtnD2State();
-}
-
-class UpdateRaisedBtnD3 extends StatefulWidget {
-  UpdateRaisedBtnD3State createState() => UpdateRaisedBtnD3State();
 }

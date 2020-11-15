@@ -56,7 +56,7 @@ class DatabaseHelper {
     if (allRows.length == 0) {
       return null;
     } else {
-      print('query all rows:');
+      //print('query all rows:');
       allRows.forEach((row) => print(row));
       var getValue = allRows.last.values.toList();
 

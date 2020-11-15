@@ -44,10 +44,10 @@ class _ConfigurePageState extends State<ConfigurePage> {
       };
 
       // do the insert and get the id of the inserted row
-      int id = await db.insert(DatabaseHelper.table, row);
+      await db.insert(DatabaseHelper.table, row);
 
       // show the results: print all rows in the db
-      print(await db.query(DatabaseHelper.table));
+      //print(await db.query(DatabaseHelper.table));
 
       //set token & url data as user hit save.
       configurationHelper.setStateAuthUrl(
